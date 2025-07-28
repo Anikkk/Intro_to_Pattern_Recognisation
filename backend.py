@@ -57,12 +57,18 @@ variation_model_map = {
     'Nut': 'model/nut_variation_classifier.pth',
     'Broccoli': 'model/broccoli_variation_classifier.pth'
 }
-variation_class_names = ['chopped', 'sliced', 'whole']
+
+variation_class_names= {'Broccoli': ['Florets', 'In-Context(Cooking)', 'Whole Crown'],
+                        'Mango': ['Cubed,Hedgehog', 'Sliced,Peeled', 'Whole'],
+                        'Nut': ['chopped', 'sliced', 'whole'],
+                        'Pepper': ['Diced,Sliced', 'Halved,Deseeded', 'Whole']}
+
+
 variation_models = {}
 
 for produce, path in variation_model_map.items():
     if os.path.exists(path):
-        model, _ = load_model(path, num_classes=3, class_names=variation_class_names)
+        model, _ = load_model(path, num_classes=3, class_names=variation_class_names[produce])
         variation_models[produce] = model
     else:
         print(f"Variation model {path} not found.")
@@ -81,7 +87,6 @@ def predict(image: Image.Image, model, class_names) -> tuple[str, float]:
     except Exception as e:
         print(f"Prediction error: {e}")
         return "unknown", 0.0
-
 # Two-stage prediction
 def classify_image(image: Image.Image) -> tuple[dict, dict]:
     produce_result = {'class': 'unknown', 'confidence': 0.0}
@@ -98,7 +103,7 @@ def classify_image(image: Image.Image) -> tuple[dict, dict]:
     # Second stage: Predict variation (if applicable)
     variation_model = variation_models.get(produce_class)
     if variation_model:
-        variation_class, variation_confidence = predict(image, variation_model, variation_class_names)
+        variation_class, variation_confidence = predict(image, variation_model, variation_class_names[produce_class])
         variation_result = {'class': variation_class, 'confidence': variation_confidence}
     else:
         print(f"No variation model for {produce_class}.")
