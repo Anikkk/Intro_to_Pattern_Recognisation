@@ -115,3 +115,103 @@ As the CV Engineer, I was responsible for training and evaluating image classifi
 
 ---
 
+
+# Phase 2: NLP Engineer Report
+
+## 1. Detailed Methodology
+
+### 🧠 My Role
+As the NLP Engineer, I was responsible for designing and evaluating a semantic recipe retrieval system using **BERT embeddings**. The goal was to enable **tag-based recipe recommendations** where users can enter descriptive queries and receive contextually relevant recipe matches.
+
+---
+
+### 🛠️ Step-by-Step Process
+
+#### 📁 Dataset Preprocessing
+- The dataset contained a set of **recipes**, each labeled with descriptive **tags** (e.g., `"vegan"`, `"quick"`, `"chicken"`)
+- I cleaned the tag text, lowercased and joined tags per recipe into a single string (e.g., `"easy dinner healthy"`)
+- I used Hugging Face's BERT tokenizer to encode each tag string:
+  - Used `[CLS]` token representation as the **embedding**
+  - Stored the resulting embeddings in a matrix for fast similarity comparison
+
+#### ⚙️ Tools & Libraries
+- Framework: **PyTorch + Hugging Face Transformers**
+- Model: **`bert-base-uncased`** (pre-trained)
+- Embedding: `[CLS]` token output (768-dimension vector)
+- Retrieval: **Cosine similarity** using `sklearn.metrics.pairwise`
+- Data handling: `pandas`, `numpy`
+- Notebook: `recipie_recommendation.ipynb`
+
+---
+
+### 🤖 Model Workflow
+
+#### 1. Recipe Embedding
+- Every recipe’s tags were embedded using `bert-base-uncased`
+- No fine-tuning was applied (used as a fixed encoder)
+- Vectors were cached to avoid recomputation
+
+#### 2. Query Processing
+- User queries (e.g., `"quick healthy vegetarian"`) were passed through the **same BERT encoder**
+- The `[CLS]` vector was used to represent the semantic meaning of the query
+
+#### 3. Semantic Search
+- The query embedding was compared to all recipe embeddings using **cosine similarity**
+- The top-5 recipes with the highest similarity scores were returned as recommendations
+
+---
+
+## 2. Analysis & Justifications
+
+### 🔍 Model Choices
+- **BERT** was chosen for its strength in capturing semantic relationships between words and tags
+- Instead of traditional keyword search, semantic search allowed us to match queries like `"hearty vegan soup"` to `"plant-based stew"`
+
+---
+
+### 📊 Model Performance
+
+#### Qualitative Evaluation
+- On test queries like `"gluten-free dinner"` or `"low carb protein lunch"`, the top recommendations were highly relevant
+- Cosine similarity effectively ranked recipes by semantic closeness
+
+#### Example Results:
+**Query**: `"high protein vegan dinner"`  
+**Top Result Tags**:
+- `"vegan, lentils, low-carb, protein-rich"`  
+- `"high-protein, plant-based, quick meal"`
+
+---
+
+### 📈 Visualizations
+- Embedding similarity scores were printed and analyzed in the notebook
+- A heatmap of cosine similarities could be added for further clarity (optional)
+
+---
+
+## 3. Insights & Reflections
+
+### ✅ What Worked Well
+- BERT embeddings performed well even without fine-tuning
+- Tag-based representations made the system light and interpretable
+- Cosine similarity was efficient and easy to implement
+
+### ⚠️ Challenges
+- Tags like `"clean"`, `"light"`, or `"classic"` were ambiguous and difficult for BERT to disambiguate
+- Some recipes had very few tags, weakening their semantic vector
+- Longer phrases like `"good for cold weather"` may benefit from fine-tuning
+
+### 🔁 Future Improvements
+- Fine-tune BERT on tag-specific datasets for better domain adaptation
+- Add query expansion or tag clustering for broader matches
+- Introduce user feedback loop to improve results over time
+
+---
+
+## 📦 Output Artifacts
+- `recipie_recommendation.ipynb` (notebook implementation)
+- `RAW_interactions.csv`
+- `RAW_recipes`
+
+
+
