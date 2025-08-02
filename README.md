@@ -21,11 +21,12 @@
 <img width="927" height="118" alt="image" src="https://github.com/user-attachments/assets/404c7b25-dce1-477b-9b94-0d15436cbf2a" />
 <img width="586" height="599" alt="image" src="https://github.com/user-attachments/assets/72c94c6f-666d-445f-8a47-af5f7950e403" />
 
-
-
 ---
 
+### Link
+https://huggingface.co/spaces/Anikkk05/Image_Classification
 
+---
 
 # Phase 2: CV  Report
 
