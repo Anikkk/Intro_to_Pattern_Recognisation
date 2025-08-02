@@ -79,8 +79,11 @@ As the CV Engineer, I was responsible for training and evaluating image classifi
 
 ### 📈 Visualizations
 - **Confusion Matrices** for both models were generated using `sklearn.metrics` and `seaborn`
-- (Optional) Accuracy/loss curves could be included by saving Keras `fit()` history
+- Accuracy/loss curves could be included by saving Keras `fit()` history
 - Files saved:
+- <img width="969" height="667" alt="image" src="https://github.com/user-attachments/assets/884ce30b-df89-4bda-94df-c3b15c1ee075" />
+- <img width="995" height="671" alt="image" src="https://github.com/user-attachments/assets/a2bf4cb5-d536-4674-b598-25390ecf14a0" />
+
   - `confusion_matrix_produce_classifier_mobilenetv2.png`
   - `confusion_matrix_variation_classifier_mobilenetv2.png`
 
@@ -203,7 +206,13 @@ As the NLP Engineer, I was responsible for designing and evaluating a semantic r
 
 ### 📈 Visualizations
 - Embedding similarity scores were printed and analyzed in the notebook
-- A heatmap of cosine similarities could be added for further clarity (optional)
+- <img width="633" height="315" alt="image" src="https://github.com/user-attachments/assets/87428bd1-a9fc-495a-b0fe-a0a9b06478b9" />
+
+- Application Interface
+- <img width="1097" height="697" alt="image" src="https://github.com/user-attachments/assets/f31381e2-e852-4d48-801e-952f29e5e4a2" />
+
+
+
 
 ** Embedding-Based Semantic Space:**
 
@@ -225,17 +234,17 @@ The model creates a 256-dimensional semantic space where:
 
 ## 3. Insights & Reflections
 
-### ✅ What Worked Well
+### What Worked Well
 - BERT embeddings performed well even without fine-tuning
 - Tag-based representations made the system light and interpretable
 - Cosine similarity was efficient and easy to implement
 
-### ⚠️ Challenges
+### Challenges
 - Tags like `"clean"`, `"light"`, or `"classic"` were ambiguous and difficult for BERT to disambiguate
 - Some recipes had very few tags, weakening their semantic vector
-- Longer phrases like `"good for cold weather"` may benefit from fine-tuning
+- The initial BERT-based model, with its 440MB size, posed significant deployment challenges on free-tier cloud platforms due to storage and memory constraints. To address this limitation, I transitioned to DistilBERT, a lighter alternative that reduces the model footprint by 40% to approximately 265MB while maintaining the transformer architecture's semantic understanding capabilities. Despite DistilBERT being specifically designed to preserve 97% of BERT's performance through knowledge distillation, the accuracy on our specific recipe search task showed some degradation
 
-### 🔁 Future Improvements
+### Future Improvements
 - Fine-tune BERT on tag-specific datasets for better domain adaptation
 - Add query expansion or tag clustering for broader matches
 - Introduce user feedback loop to improve results over time
@@ -245,7 +254,7 @@ The model creates a 256-dimensional semantic space where:
 ## 📦 Output Artifacts
 - `recipie_recommendation.ipynb` (notebook implementation)
 - `RAW_interactions.csv`
-- `RAW_recipes`
+- `RAW_recipes.csv`
 
 
 
