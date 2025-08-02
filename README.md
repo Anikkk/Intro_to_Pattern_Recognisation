@@ -1,3 +1,32 @@
+### 🚀 Steps to Run the Project
+
+1. **Open the project using the provided link.**
+
+2. **Go to the "Image Classification" tab:**
+   - Upload or attach an image.
+   - Click the **"Classify"** button.
+   - The model will predict:
+     - The **ingredient type**: _Mango, Bell Pepper, Nuts, or Broccoli_
+     - The **form**: _Whole, Chopped, or Sliced_
+
+<img width="927" height="118" alt="image" src="https://github.com/user-attachments/assets/53d1af49-1ba8-4c8d-8abc-5289c9fc33c3" />
+<img width="557" height="308" alt="image" src="https://github.com/user-attachments/assets/6646b291-2e17-4e92-9c2a-e1c1fe7771db" />
+
+
+
+3. **Navigate to the "Recipe Recommendation" tab:**
+   - Use the **search bar** to enter one or more tags (e.g., `"quick"`, `"vegan"`, `"spicy"`).
+   - The system will recommend the **Top 5 recipes** based on the semantic similarity of your tags.
+
+<img width="927" height="118" alt="image" src="https://github.com/user-attachments/assets/404c7b25-dce1-477b-9b94-0d15436cbf2a" />
+<img width="586" height="599" alt="image" src="https://github.com/user-attachments/assets/72c94c6f-666d-445f-8a47-af5f7950e403" />
+
+
+
+---
+
+
+
 # Phase 2: CV  Report
 
 ## 1. Detailed Methodology
