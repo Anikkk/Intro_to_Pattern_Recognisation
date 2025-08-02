@@ -24,7 +24,9 @@
 ---
 
 ### Link
-https://huggingface.co/spaces/Anikkk05/Image_Classification
+https://huggingface.co/spaces/Anikkk05/web-app (Main URL)
+https://huggingface.co/spaces/Anikkk05/Image_Classification (Backup URL)
+
 
 ---
 
